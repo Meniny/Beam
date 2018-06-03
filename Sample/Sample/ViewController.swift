@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         TestBeam.register(self) { (event) in
             self.counter += 1
-            print("Event: ", event.rawValue, self.counter)
+            print("Event: [PRE]", event.rawValue, self.counter)
         }
         
         self.view.isUserInteractionEnabled = true
@@ -50,6 +50,10 @@ class ViewController: UIViewController {
 
 }
 
+struct StructEvent: Event {
+    let name: String
+}
+
 class NextViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -61,10 +65,24 @@ class NextViewController: UIViewController {
         tap.numberOfTouchesRequired = 1
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        Beam<StructEvent>.register(self) { (event) in
+            print("Event: [Next]", event.name)
+        }
+        
+        TestBeam.register(self) { (event) in
+            print("Event: [Next]", event.rawValue)
+        }
+//    }
+    
+    deinit {
+        Beam<StructEvent>.unregister(self)
+        TestBeam.unregister(self)
     }
     
     @objc
     func go() {
+        Beam<StructEvent>.post(StructEvent.init(name: "\(Date())"))
         TestBeam.post(.callback)
         self.dismiss(animated: true, completion: nil)
     }
