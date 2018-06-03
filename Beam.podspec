@@ -17,9 +17,9 @@ DESC
   s.tvos.deployment_target    = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.requires_arc        = true
   s.source              = { git: 'https://github.com/Meniny/Beam.git', tag: s.version.to_s }
-  s.source_files        = 'RepoName/**/*.swift'
+
+  s.requires_arc        = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.1' }
   s.swift_version       = '4.1'
 
