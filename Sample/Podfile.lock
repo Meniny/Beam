@@ -1,0 +1,18 @@
+PODS:
+  - Beam (1.0.0):
+    - Beam/Core (= 1.0.0)
+  - Beam/Core (1.0.0)
+
+DEPENDENCIES:
+  - Beam (from `../`)
+
+EXTERNAL SOURCES:
+  Beam:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Beam: dd2954513f533cdcee4c0cb76750937dd28f4b88
+
+PODFILE CHECKSUM: c78dbcc4138448f0e42be826418142184d29ba0b
+
+COCOAPODS: 1.5.2
